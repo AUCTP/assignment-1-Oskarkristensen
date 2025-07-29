@@ -14,7 +14,7 @@ import random
 items = ["Sandwich", "Salad", "Cake"]
 prices = [65, 45, 50]
 inventories = [100, 50, 100]
-cost = [32.2, 22.5, 25.0] 
+cost = [p / 2 for p in prices] 
 total_cost = sum(cost[i] * inventories[i] for i in range(len(cost)))
 
 ### 2. Simulate Customer Arrivals
