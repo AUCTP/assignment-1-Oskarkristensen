@@ -11,24 +11,15 @@
 
 import random
 
-# Some example items - feel free tho change them
 items = ["Sandwich", "Salad", "Cake"]
 prices = [65, 45, 50]
 inventories = [100, 50, 100]
 cost = [32.2, 22.5, 25.0] 
-# Total cost of all items initially purchased for the cafeteria
 total_cost = sum(cost[i] * inventories[i] for i in range(len(cost)))
-### 2. Simulate Customer Arrivals
-'''
-- Create a function `simulate_customers`:
-  - Simulate a given number of students arriving in the university.
-  - For each student, the chance of buying an item at the cafeteria is 50%.
-  - For the students that buy an item, randomly select which item it is.
-  - Check if there is still inventory for the item available and process the transaction (reduce the inventory, store the sale)
 
-  - The function should return a list `sales` storing all item ids of the performed transactions
-'''
-num_students = int(input("Enter the number of students arriving at the cafeteria: "))
+### 2. Simulate Customer Arrivals
+
+num_students = int(input("Number of students arriving at the cafeteria: "))
 def simulate_customers(num_students):
     sales = []
     for student in range(num_students):
@@ -39,12 +30,9 @@ def simulate_customers(num_students):
                 sales.append(item_id)
     return sales
 sales = simulate_customers(num_students)
+print("=== Cafeteria Sales Report ===")
 print(f"Number of students who bought items: {len(sales)}")
 ### 3. Process Sales
-'''
-- Create a function `process_sales`:
-  - Calculate the total revenue from the list of customer transactions (`sales`).`
-'''
 def process_sales(sales):
     total_revenue = 0
     for item_id in sales:
@@ -54,23 +42,17 @@ total_revenue = process_sales(sales)
 print(f"Total revenue from sales: {total_revenue} kr")
 
 ### 4. Generate Sales Report
-'''
-- Create a function `generate_report`:
-  - Print a summary of the day's sales, including total revenue and remaining inventory.
-'''
+
 def generate_report(total_revenue):
-    print("=== Cafeteria Sales Report ===")
     print(f"Total Revenue: {total_revenue} kr")
     print("Remaining Inventory:")
     for i in range(len(items)):
         print(f"  {items[i]}: {inventories[i]} remaining")
-    print("==============================")
 generate_report(total_revenue)
 
-# Cost of all items minus the total revenue
-# The cost needs to include the not sold items as well
-# Assuming a fixed cost for each item for simplicity
-
-
-profit = total_revenue - total_cost
+### 5. Calculate Profit
+def calculate_profit(total_revenue, total_cost):
+    profit = total_revenue - total_cost
+    return profit
+profit = calculate_profit(total_revenue, total_cost)
 print(f"Total profit for the day: {profit} kr")
