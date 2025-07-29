@@ -1,3 +1,6 @@
+### Oskar Bjerre Kristensen
+# Computational Thinking with Python - Assignment 1
+
 ## Scenario
 # In this assignment, you will create a simulation of the university cafeteria where customers arrive, purchase items, and leave. The program should track the inventory of the items, simulate customer transactions, and generate a report of the day's sales.
 
@@ -55,4 +58,12 @@ def calculate_profit(total_revenue, total_cost):
     profit = total_revenue - total_cost
     return profit
 profit = calculate_profit(total_revenue, total_cost)
-print(f"Total profit for the day: {profit} kr")
+print(f"Total profit for entire inventory: {profit} kr")
+
+### 5.2 Profit for sold items
+total_cost_sold = sum(cost[i] * (inventories[i]) for i in range(len(cost)))
+def calculate_profit_sold(total_revenue, total_cost_sold):
+    profit = total_revenue - total_cost_sold
+    return profit
+profit_sold = calculate_profit_sold(total_revenue, total_cost_sold)
+print(f"Total profit for sold inventory: {profit_sold} kr")
